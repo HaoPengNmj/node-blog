@@ -1,0 +1,18 @@
+{% extends './layout/layout.html' %}
+{% block content %}
+    {% include "./layout/tag.html" %} 
+    <div class="layui-container">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md8">
+                <ul class="article-list"></ul>
+                <div id="laypage" data-maxNum="0"></div>
+            </div>
+            {% include "./layout/right_tag.html" %} 
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}    
+    <script src="/js/index.js"></script>
+{% endblock %}
