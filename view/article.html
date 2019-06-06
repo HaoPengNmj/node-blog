@@ -1,0 +1,59 @@
+{% extends './layout/layout.html' %}
+
+{% block css%}
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/article.css">
+{% endblock %}
+
+{% block content %}
+{% include "./layout/tag.html" %} 
+<div class="layui-container">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md8">
+            <div class="content default-box layui-text">
+                <h1 class="art-title text-center" data-artid="{{article._id+''}}">{{article.title}}</h1>
+                <div class="other-info text-center">
+                    <span>{{article.author.username}}</span>
+                    <span>&nbsp;&nbsp;发表于：</span>
+                    <span>{{article.created.toLocaleString()}}</span>
+                    <span>&nbsp;分类：</span>
+                    <span>{{article.tips|join()}}</span>
+                </div>
+                <div class="article-detail" style="padding:10px;">
+                   {{article.content|raw}}
+                </div>
+            </div>
+            <div class="comment default-box">
+                <fieldset class="text-center">
+                    <legend>评论</legend>
+                </fieldset>
+                <div class="txt"><textarea id="comment-txt" class="layui-hide"></textarea>
+                    <div class="layui-layedit">
+                        <div class="layui-unselect layui-layedit-tool" style="display: none;"></div>
+                        <div class="layui-layedit-iframe"><iframe id="LAY_layedit_1" name="LAY_layedit_1" textarea="comment-txt"
+                                frameborder="0" style="height: 160px;"></iframe></div>
+                    </div><button class="layui-btn">回复</button></div>
+                <ul class="comment-list">
+                    {% for info in comment %}
+                        <li>
+                            <img src="{{info.from.avatar}}" alt="">
+                            <div>
+                                <p class="author">{{info.from.username}}</p>
+                                <p class="time">{{info.created.toLocaleString()}}</p>
+                            </div>
+                            <div class="she-said">
+                                {{info.content}}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% include "./layout/right_tag.html" %} 
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="/js/article.js"></script>
+{% endblock %}

@@ -15,7 +15,7 @@ const sessionConfig = {
     /** (number || 'session') maxAge in ms (default is 1 days) */
     /** 'session' will result in a cookie that expires when session/browser is closed */
     /** Warning: If a session cookie is stolen, this cookie will never expire */
-    maxAge: 86400000,
+    maxAge: 36e5,//86400000,
     autoCommit: true, /** (boolean) automatically commit headers (default true) */
     overwrite: true, /** (boolean) can overwrite or not (default true) */
     httpOnly: true, /** (boolean) httpOnly or not (default true) */

@@ -34,7 +34,7 @@ module.exports.userReg = async ctx => {
         return { status: err }
     });
     console.log(res);
-    ctx.body = await ctx.render('isOk', res);
+    ctx.body = await ctx.render('isOk', { ...res, path: '/' });
 }
 
 //登录
@@ -74,7 +74,7 @@ module.exports.userLog = async ctx => {
         return { status: err }
     });
     console.log(res);
-    ctx.body = await ctx.render('isOk', res);
+    ctx.body = await ctx.render('isOk', { ...res, path: '/' });
 }
 
 module.exports.logout = async ctx => {

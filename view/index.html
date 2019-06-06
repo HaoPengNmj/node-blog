@@ -1,11 +1,34 @@
 {% extends './layout/layout.html' %}
+{% block css%}
+<link rel="stylesheet" href="/css/index.css">
+{% endblock%}
+
 {% block content %}
     {% include "./layout/tag.html" %} 
     <div class="layui-container">
         <div class="layui-row layui-col-space15">
             <div class="layui-col-md8">
-                <ul class="article-list"></ul>
-                <div id="laypage" data-maxNum="0"></div>
+                <ul class="article-list">
+                        {% for info in artList %}
+                            <li>
+                                <a href="" class="list-face">
+                                    <img src="{{info.author.avatar}}" alt="{{info.author}}">
+                                </a>
+                                <h2>
+                                    <a href="" class="layui-badge">{{info.tips}}</a>
+                                    <a href="/article/detail/{{info._id+''}}" class="articlt-title ellipsis">{{info.title}}</a>
+                                </h2>
+                                <div class="list-info">
+                                    <a href="">{{info.author.username}}</a>
+                                    <span>{{info.created.toLocaleString()}}</span>
+                                    <span class="list-reply">
+                                        <i class="layui-icon layui-icon-file-b" title="评论">{{info.commentNum}}</i>
+                                    </span>
+                                </div>
+                            </li>
+                        {% endfor %}
+                </ul>
+                <div id="laypage" data-maxNum="{{maxNum}}"></div>
             </div>
             {% include "./layout/right_tag.html" %} 
         </div>

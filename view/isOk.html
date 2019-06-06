@@ -17,8 +17,9 @@
     <h2>{{status}}</h2>
     <h2>即将跳转...</h2>
     <script>
+        var path = '{{path}}';
         setTimeout(() => {
-            location.href = '/';
+            location.href = path;
         }, 5000);
     </script>
 </body>

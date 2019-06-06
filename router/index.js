@@ -3,14 +3,19 @@ const Router = require('koa-router');
 const router = new Router();
 
 const user = require('./user');
+const article = require('./article');
+const comment = require('./comment.js');
+
+const {articlePages} = require('../controller/article');
 
 const { keepLogin, checkLogin } = require('../middleware/login');
 
-router.get('/', keepLogin, async ctx => {
-    console.log('session:', ctx.session);
-    ctx.body = await ctx.render('index', { session: ctx.session, title: '博客首页' });
-});
+router.get('/', keepLogin, articlePages);
 
 router.use('/user', user.routes()).use(user.allowedMethods());
+
+router.use('/article',article.routes()).use(article.allowedMethods());
+
+router.use('/comment',comment.routes()).use(comment.allowedMethods());
 
 module.exports = router;
