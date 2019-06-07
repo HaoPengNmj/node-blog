@@ -2,6 +2,8 @@ const User = require('../model/user');
 const encrypt = require('../util/encrypt');
 const setCookie = require('../util/cookie');
 
+const getRight = require('../config/role');
+
 //注册
 module.exports.userReg = async ctx => {
     let { name, password } = ctx.request.body;
@@ -90,6 +92,22 @@ module.exports.logout = async ctx => {
     ctx.redirect("/")
 }
 
+//我的
+module.exports.userCenter = async ctx => {
+    
+    
+    //获取权限
+    const page = ctx.params.id || 'article';
+    const role = ctx.session.role || 1;
+    const roleRight = getRight(role);
+
+    console.log('userCenter::',page);
+
+    ctx.body = await ctx.render(`admin/admin-${page}`, {
+        role: ctx.session.role,
+        roleRight
+    });
+}
 // async function test() {
 //     let res = await new Promise((resolve, reject) => {
 //         setTimeout(() => {

@@ -6,16 +6,18 @@ const user = require('./user');
 const article = require('./article');
 const comment = require('./comment.js');
 
-const {articlePages} = require('../controller/article');
+const { articlePages } = require('../controller/article');
 
 const { keepLogin, checkLogin } = require('../middleware/login');
 
 router.get('/', keepLogin, articlePages);
 
+
+
 router.use('/user', user.routes()).use(user.allowedMethods());
 
-router.use('/article',article.routes()).use(article.allowedMethods());
+router.use('/article', article.routes()).use(article.allowedMethods());
 
-router.use('/comment',comment.routes()).use(comment.allowedMethods());
+router.use('/comment', comment.routes()).use(comment.allowedMethods());
 
 module.exports = router;

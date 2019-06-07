@@ -11,7 +11,7 @@ articlesRouter.get('/', checkLogin, articleController.addpage);
 articlesRouter.post('/', articleController.add);
 
 //我的文章
-articlesRouter.get('/my', articleController.myArticle);
+//articlesRouter.get('/my', articleController.myArticle);
 
 //文章详情页
 articlesRouter.get('/detail/:id', checkLogin, articleController.articleDetail);

@@ -56,10 +56,6 @@ module.exports.add = async ctx => {
 
 }
 
-//我的文章
-module.exports.myArticle = async ctx => {
-
-}
 
 //文章详情页
 module.exports.articleDetail = async ctx => {
@@ -133,4 +129,18 @@ module.exports.articlePages = async ctx => {
         artList,
         maxNum
     })
+}
+
+
+//我的文章 json
+module.exports.myArticles = async ctx => {
+    const uid = ctx.session.uid
+
+    const data = await Article.find({ author: uid })
+
+    ctx.body = {
+        code: 0,
+        count: data.length,
+        data
+    }
 }

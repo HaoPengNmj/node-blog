@@ -1,6 +1,7 @@
 const Comment = require('../model/comment');
 const Article = require('../model/article');
 const User = require('../model/user');
+
 //提交评论
 module.exports.submitComment = async ctx => {
 
@@ -42,4 +43,19 @@ module.exports.submitComment = async ctx => {
             console.log('user评论计数失败：', err);
         });
     ctx.body = res;
+}
+
+// 后台： 查询用户所有评论 json
+module.exports.commentList = async ctx => {
+    const uid = ctx.session.uid
+
+    const data = await Comment.find({ from: uid }).populate("article", "title")
+
+
+    ctx.body = {
+        code: 0,
+        count: data.length,
+        data
+    }
+
 }
