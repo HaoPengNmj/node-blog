@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-mongoose.connect("mongodb://39.108.225.12:27017/blogproject",
+const { path } = require('../config/db') || 'mongodb://localhost:27017/blogproject';
+
+mongoose.connect(path,
     { useNewUrlParser: true })
     .then(() => {
         console.log('mongodb连接成功');

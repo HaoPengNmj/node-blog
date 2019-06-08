@@ -2,9 +2,9 @@ const userRouter = require('koa-router')();
 
 const { userLog, userReg, logout, userCenter } = require('../controller/user');
 
-const {myArticles } = require('../controller/article');
+const { myArticles } = require('../controller/article');
 
-const {commentList} =require('../controller/comment');
+const { commentList } = require('../controller/comment');
 
 const { keepLogin, checkLogin } = require('../middleware/login');
 
@@ -23,7 +23,7 @@ userRouter.post('/log', userLog)
 
 userRouter.get('/logout', logout)
 
-userRouter.get('/my/:id', userCenter)
+userRouter.get('/my/:id', checkLogin, userCenter)
 
 
 // 获取用户的所有文章

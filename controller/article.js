@@ -80,7 +80,7 @@ module.exports.articleDetail = async ctx => {
             return []
         });
 
-    console.log(article, comment);
+    //console.log(article, comment);
 
 
     ctx.body = await ctx.render('article', {
@@ -136,7 +136,7 @@ module.exports.articlePages = async ctx => {
 module.exports.myArticles = async ctx => {
     const uid = ctx.session.uid
 
-    const data = await Article.find({ author: uid })
+    const data = uid ? await Article.find({ author: uid }) : [];
 
     ctx.body = {
         code: 0,

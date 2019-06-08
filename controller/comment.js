@@ -49,7 +49,7 @@ module.exports.submitComment = async ctx => {
 module.exports.commentList = async ctx => {
     const uid = ctx.session.uid
 
-    const data = await Comment.find({ from: uid }).populate("article", "title")
+    const data = uid ? await Comment.find({ from: uid }).populate("article", "title") : []
 
 
     ctx.body = {

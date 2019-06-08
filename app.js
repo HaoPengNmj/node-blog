@@ -7,6 +7,7 @@ const body = require('koa-body');
 const session = require('koa-session');
 const co = require('co');
 const path = require('path');
+const errorHandler = require('./middleware/errorHandler');
 
 app.keys = ['chpblog'];
 
@@ -33,14 +34,17 @@ app.context.render = co.wrap(render({
     writeBody: false
 }));
 
+app.use(errorHandler.errorCode())
+    .use(errorHandler.notFound());
+
 app.use(session(sessionConfig, app));
 
 app.use(body());
 
-app.use(static(path.join(__dirname,'public')));
+app.use(static(path.join(__dirname, 'public')));
 
 app.use(router.routes()).use(router.allowedMethods());
 
-app.listen(3222,()=>{
+app.listen(3222, () => {
     console.log("项目启动成功，监听在3222端口")
 })

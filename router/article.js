@@ -8,15 +8,15 @@ const { keepLogin, checkLogin } = require('../middleware/login');
 articlesRouter.get('/', checkLogin, articleController.addpage);
 
 //发表文章post
-articlesRouter.post('/', articleController.add);
+articlesRouter.post('/', keepLogin, articleController.add);
 
 //我的文章
 //articlesRouter.get('/my', articleController.myArticle);
 
 //文章详情页
-articlesRouter.get('/detail/:id', checkLogin, articleController.articleDetail);
+articlesRouter.get('/detail/:id', keepLogin, articleController.articleDetail);
 
 //文章列表页
-articlesRouter.get('/page/:id', articleController.articlePages);
+articlesRouter.get('/page/:id', keepLogin, articleController.articlePages);
 
 module.exports = articlesRouter;

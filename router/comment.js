@@ -2,8 +2,8 @@ const commentController = require("../controller/comment")
 
 const commentRouter = require('koa-router')();
 
-const { keepLogin, checkLogin } = require('../middleware/login');
+const { keepLogin } = require('../middleware/login');
 
-commentRouter.post('/', commentController.submitComment);
+commentRouter.post('/', keepLogin, commentController.submitComment);
 
 module.exports = commentRouter;
