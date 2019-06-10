@@ -36,7 +36,7 @@ module.exports.checkLogin = async (ctx, next) => {
         }
         else {
             //跳去登录
-            ctx.body = await ctx.render('isOk', { status:'你还没有登录...', path: '/user/log' });
+            ctx.body = await ctx.render('isOk', { status:'你还没有登录...', path: '/blog/user/log' });
         }
     } else {
         await next();

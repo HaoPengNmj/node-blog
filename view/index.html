@@ -1,6 +1,6 @@
 {% extends './layout/layout.html' %}
 {% block css%}
-<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/blog/css/index.css">
 {% endblock%}
 
 {% block content %}
@@ -12,11 +12,11 @@
                         {% for info in artList %}
                             <li>
                                 <a href="" class="list-face">
-                                    <img src="{{info.author.avatar}}" alt="{{info.author}}">
+                                    <img src="/blog/{{info.author.avatar}}" alt="{{info.author}}">
                                 </a>
                                 <h2>
                                     <a href="" class="layui-badge">{{info.tips}}</a>
-                                    <a href="/article/detail/{{info._id+''}}" class="articlt-title ellipsis">{{info.title}}</a>
+                                    <a href="/blog/article/detail/{{info._id+''}}" class="articlt-title ellipsis">{{info.title}}</a>
                                 </h2>
                                 <div class="list-info">
                                     <a href="">{{info.author.username}}</a>
@@ -37,5 +37,5 @@
 {% endblock %}
 
 {% block script %}    
-    <script src="/js/index.js"></script>
+    <script src="/blog/js/index.js"></script>
 {% endblock %}

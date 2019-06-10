@@ -25,7 +25,7 @@ layui.use(['layedit', 'layer', 'element'], function(){
       article: $(".art-title").data("artid")
     }
 
-    $.post("/comment", data, (data) => {
+    $.post("/blog/comment", data, (data) => {
       layer.msg(data.msg, {
         time: 1000,
         end(){

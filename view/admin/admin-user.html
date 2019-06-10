@@ -1,7 +1,7 @@
 {% extends 'admin.html' %}
 
 {% block content %}
-<table class="layui-table" lay-data="{url:'/user/users', page:true, id:'idTest'}" lay-filter="demo">
+<table class="layui-table" lay-data="{url:'/blog/user/users', page:true, id:'idTest'}" lay-filter="demo">
   <thead>
     <tr>
       <th lay-data="{field:'username', align:'center'}">用户名</th>
@@ -27,7 +27,7 @@
       layer.confirm("确认删除？", () => {
         $.ajax({
           method: "delete",
-          url: "/article/" + _id,
+          url: "/blog/article/" + _id,
           data: {
             _id
           },

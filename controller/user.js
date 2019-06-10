@@ -36,7 +36,7 @@ module.exports.userReg = async ctx => {
         return { status: err }
     });
     console.log(res);
-    ctx.body = await ctx.render('isOk', { ...res, path: '/' });
+    ctx.body = await ctx.render('isOk', { ...res, path: '/blog/' });
 }
 
 //登录
@@ -76,7 +76,7 @@ module.exports.userLog = async ctx => {
         return { status: err }
     });
     console.log(res);
-    ctx.body = await ctx.render('isOk', { ...res, path: '/' });
+    ctx.body = await ctx.render('isOk', { ...res, path: '/blog/' });
 }
 
 module.exports.logout = async ctx => {
@@ -89,7 +89,7 @@ module.exports.logout = async ctx => {
         maxAge: 0
     })
     // 在后台做重定向到 根  
-    ctx.redirect("/")
+    ctx.redirect("/blog/")
 }
 
 //我的

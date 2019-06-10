@@ -1,32 +1,32 @@
 <div class="blog-header layui-bg-black">
     <div class="layui-container">
         <ul class="layui-nav">
-            <li class="layui-nav-item" id="haha"><a href="/"><i class="layui-icon layui-icon-home"> </i>首页</a></li>
-            <li class="layui-nav-item"><a href="/">Web</a></li>
-            <li class="layui-nav-item"><a href="/">大数据</a></li>
-            <li class="layui-nav-item"><a href="/">Java</a></li>
-            <li class="layui-nav-item"><a href="/">Python</a></li>
-            <li class="layui-nav-item"><a href="/">关于博主</a></li>
+            <li class="layui-nav-item" id="haha"><a href="/blog/"><i class="layui-icon layui-icon-home"> </i>首页</a></li>
+            <li class="layui-nav-item"><a href="/blog/">Web</a></li>
+            <li class="layui-nav-item"><a href="/blog/">大数据</a></li>
+            <li class="layui-nav-item"><a href="/blog/">Java</a></li>
+            <li class="layui-nav-item"><a href="/blog/">Python</a></li>
+            <li class="layui-nav-item"><a href="/blog/">关于博主</a></li>
         </ul>
         <ul class="layui-nav blog-user">
             {% if session&&!session.isNew %}
             <li class="layui-nav-item">
-                <a href="/user/my/article">个人中心</a>
+                <a href="/blog/user/my/article">个人中心</a>
             </li>
             <li class="layui-nav-item">
                 <a href="">
-                    <img src="{{session.avatar}}" alt="" class="layui-nav-img">
+                    <img src="/blog/{{session.avatar}}" alt="" class="layui-nav-img">
                     <span>{{session.username}}</span>
                 </a>
                 <dl class="layui-nav-child">
                     <dd>
-                        <a href="/user/logout">退了</a>
+                        <a href="/blog/user/logout">退了</a>
                     </dd>
                 </dl>
             </li>
             {% else %}
-            <li class="layui-nav-item"><a href="/user/log">登入</a></li>
-            <li class="layui-nav-item"><a href="/user/reg">注册</a></li>
+            <li class="layui-nav-item"><a href="/blog/user/log">登入</a></li>
+            <li class="layui-nav-item"><a href="/blog/user/reg">注册</a></li>
             {% endif %}
         </ul>
     </div>

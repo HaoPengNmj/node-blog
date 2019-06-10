@@ -12,7 +12,7 @@
 {% endmacro %}
 
 {% block css %}
-<link rel="stylesheet" href="/css/register.css">
+<link rel="stylesheet" href="/blog/css/register.css">
 {% endblock %}
 
 {% block content %}
@@ -25,7 +25,7 @@
             </ul>
             <div class="layui-tab-content">
                 <div class="layui-tab-item {% if !isreg %}layui-show{% endif %}">
-                    <form class="layui-form" action="/user/log" method="post">
+                    <form class="layui-form" action="/blog/user/log" method="post">
                         {{ input() }}
                         <div class="layui-form-item">
                             <div class="layui-input-block"><button class="layui-btn" lay-submit="lay-submit" lay-filter="formDemo">立即提交</button><button
@@ -34,7 +34,7 @@
                     </form>
                 </div>
                 <div class="layui-tab-item {% if isreg %}layui-show{% endif %}">
-                    <form class="layui-form" action="/user/reg" method="POST">
+                    <form class="layui-form" action="/blog/user/reg" method="POST">
                         {{ input() }}
                         <div class="layui-form-item"><label class="layui-form-label">确认密码</label>
                             <div class="layui-input-inline"><input class="layui-input" type="password" name="confirmPWD"

@@ -1,7 +1,7 @@
 {% extends 'admin.html' %}
 
 {% block content %}
-<table class="layui-table" lay-data="{ url:'/user/comments', page:true, id:'idTest'}" lay-filter="demo">
+<table class="layui-table" lay-data="{ url:'/blog/user/comments', page:true, id:'idTest'}" lay-filter="demo">
   <thead>
     <tr>
       <th lay-data="{field:'article', align:'center', templet: res =&gt; res.article.title}">被评文章</th>
@@ -30,7 +30,7 @@
       layer.confirm("确认删除？", () => {
         $.ajax({
           method: "delete",
-          url: "/comment/" + commentId,
+          url: "/blog/comment/" + commentId,
           data: {
             // 发送文章id值，减少后台查询
             articleId

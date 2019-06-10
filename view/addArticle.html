@@ -48,7 +48,7 @@
                 </ul>
                 <div class="layui-form layui-form-content" id="editing">
                     <div class="layui-tab-item layui-show">
-                        <form action="/article" method="POST">
+                        <form action="/blog/article" method="POST">
                             <div class="layui-row layui-col-space15 layui-form-item">
                                 <div class="layui-col-md3"><label class="layui-form-label">文章分类</label>
                                     <div class="layui-input-block"><select lay-verify="required" name="tips" lay-filter="column">
@@ -99,10 +99,10 @@
                 content: layedit.getContent(index)
             }
 
-            $.post("/article", data, (msg) => {
+            $.post("/blog/article", data, (msg) => {
                 if (msg.status) {
                     layer.alert('发表成功', (res) => {
-                        location.href = "/"
+                        location.href = "/blog/"
                     })
                 } else {
                     layer.alert(`发表失败，失败信息：${msg.msg}`)

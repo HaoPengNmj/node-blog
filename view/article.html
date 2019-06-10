@@ -1,8 +1,8 @@
 {% extends './layout/layout.html' %}
 
 {% block css%}
-<link rel="stylesheet" href="/css/index.css">
-<link rel="stylesheet" href="/css/article.css">
+<link rel="stylesheet" href="/blog/css/index.css">
+<link rel="stylesheet" href="/blog/css/article.css">
 {% endblock %}
 
 {% block content %}
@@ -36,7 +36,7 @@
                 <ul class="comment-list">
                     {% for info in comment %}
                         <li>
-                            <img src="{{info.from.avatar}}" alt="">
+                            <img src="/blog/{{info.from.avatar}}" alt="">
                             <div>
                                 <p class="author">{{info.from.username}}</p>
                                 <p class="time">{{info.created.toLocaleString()}}</p>
@@ -55,5 +55,5 @@
 {% endblock %}
 
 {% block script %}
-<script src="/js/article.js"></script>
+<script src="/blog/js/article.js"></script>
 {% endblock %}
