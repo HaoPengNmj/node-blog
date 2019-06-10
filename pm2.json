@@ -1,0 +1,11 @@
+{
+    "name": "ssr-blog",
+    "script": "app.js",
+    "watch": true,
+    "out_file": "./logs/app-out.log",
+    "env": {
+        "NODE_ENV": "production"
+    },
+    "instances": "max",
+    "exec_mode": "cluster"
+}

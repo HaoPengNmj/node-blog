@@ -5,6 +5,7 @@ const render = require('koa-swig');
 const static = require('koa-static');
 const body = require('koa-body');
 const session = require('koa-session');
+const compress = require('koa-compress');
 const co = require('co');
 const path = require('path');
 const errorHandler = require('./middleware/errorHandler');
@@ -36,6 +37,17 @@ app.context.render = co.wrap(render({
 
 app.use(errorHandler.errorCode())
     .use(errorHandler.notFound());
+
+// 注册资源压缩模块 compress
+app.use(compress({
+    threshold: 2048,
+    flush: require('zlib').Z_SYNC_FLUSH
+}));
+
+app.use(async(ctx, next) => {
+    ctx.compress = true;
+    await next();
+});
 
 app.use(session(sessionConfig, app));
 

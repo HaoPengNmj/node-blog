@@ -120,7 +120,7 @@ module.exports.articlePages = async ctx => {
             console.log(err);
             return [];
         });
-    console.log(artList);
+    //console.log(artList);
 
 
     ctx.body = await ctx.render('index', {
