@@ -110,16 +110,24 @@ module.exports.userCenter = async ctx => {
 }
 
 //头相上传
-module.exports.uploadHead = async ctx=>{
-    if (ctx.session.isNew) {
-        return ctx.body = {
-            msg: "用户未登录",
-            status: 0
-        }
-    }
-
-    const data = ctx.request.body;
-    
+module.exports.uploadface = async ctx => {
+    //console.log('face');
+    const filename = ctx.req.file.filename;
+    let res = await User
+        .updateOne({ _id: ctx.session.uid }, { $set: { avatar: "/facefile/" + filename } })
+        .then(res => {
+            return {
+                status: 1,
+                message: "上传成功"
+            }
+        }).catch(err => {
+            return {
+                status: 0,
+                message: "上传失败"
+            }
+        });
+    ctx.session.avatar = "/facefile/" + filename;
+    ctx.body = res;
 }
 
 
