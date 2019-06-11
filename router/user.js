@@ -34,7 +34,7 @@ userRouter.get("/articles", keepLogin, myArticles);
 // 获取用户的所有评论
 userRouter.get("/comments", keepLogin, commentList);
 
-userRouter.post('/upload', keepLogin, upload.single('file'), uploadface)
+userRouter.post('/face', keepLogin, upload.single('file'), uploadface)
 
 module.exports = userRouter;
 
