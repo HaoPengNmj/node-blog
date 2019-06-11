@@ -94,20 +94,41 @@ module.exports.logout = async ctx => {
 
 //我的
 module.exports.userCenter = async ctx => {
-    
-    
+
+
     //获取权限
     const page = ctx.params.id || 'article';
     const role = ctx.session.role || 1;
     const roleRight = getRight(role);
 
-    console.log('userCenter::',page);
+    console.log('userCenter::', page);
 
     ctx.body = await ctx.render(`admin/admin-${page}`, {
         role: ctx.session.role,
         roleRight
     });
 }
+
+module.exports.uploadface = async ctx => {
+    console.log('face');
+    const filename = ctx.req.file.filename;
+    let res = await User
+        .updateOne({ _id: ctx.session.uid }, { $set: { avatar: "/facefile/" + filename } })
+        .then(res => {
+            return {
+                status: 1,
+                message: "上传成功"
+            }
+        }).catch(err => {
+            return {
+                status: 0,
+                message: "上传失败"
+            }
+        });
+    ctx.session.avatar = "/facefile/" + filename;
+    ctx.body = res;
+}
+
 // async function test() {
 //     let res = await new Promise((resolve, reject) => {
 //         setTimeout(() => {

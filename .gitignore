@@ -65,3 +65,6 @@ public/layui/images/face/
 
 #dbpath
 config/db.js
+
+#user face
+public/facefile/
