@@ -19,4 +19,7 @@ articlesRouter.get('/detail/:id', keepLogin, articleController.articleDetail);
 //文章列表页
 articlesRouter.get('/page/:id', keepLogin, articleController.articlePages);
 
+//删除文章
+articlesRouter.del('/:id', keepLogin, articleController.removeArticle)
+
 module.exports = articlesRouter;

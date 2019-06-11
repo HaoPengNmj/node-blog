@@ -42,7 +42,7 @@
                                 <p class="time">{{info.created.toLocaleString()}}</p>
                             </div>
                             <div class="she-said">
-                                {{info.content}}
+                                {{info.content|raw}}
                             </div>
                         </li>
                     {% endfor %}

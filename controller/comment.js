@@ -59,3 +59,25 @@ module.exports.commentList = async ctx => {
     }
 
 }
+
+//删除品论
+module.exports.removeComment = async ctx => {
+    if (ctx.session.isNew) {
+        return ctx.body = {
+            msg: "用户未登录",
+            status: 0
+        }
+    }
+
+    const commentId = ctx.pramas.id;
+
+    const res = await Comment.remove({ '_id': commentId })
+        .then(res => {
+            return { state: 1, message: "成功" }
+        })
+        .catch(err => {
+            return { state: 0, message: err }
+        });
+
+    ctx.body = res;   
+}

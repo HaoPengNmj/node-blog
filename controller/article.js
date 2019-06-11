@@ -144,3 +144,25 @@ module.exports.myArticles = async ctx => {
         data
     }
 }
+
+//删除文章
+module.exports.removeArticle = async ctx => {
+    if (ctx.session.isNew) {
+        return ctx.body = {
+            msg: "用户未登录",
+            status: 0
+        }
+    }
+
+    const articleId = ctx.pramas.id;
+
+    const res = await Article.remove({ '_id': articleId })
+        .then(res => {
+            return { state: 1, message: "成功" }
+        })
+        .catch(err => {
+            return { state: 0, message: err }
+        });
+
+    ctx.body = res;   
+}

@@ -6,4 +6,6 @@ const { keepLogin } = require('../middleware/login');
 
 commentRouter.post('/', keepLogin, commentController.submitComment);
 
+commentRouter.del('/:id', keepLogin, commentController.removeComment);
+
 module.exports = commentRouter;

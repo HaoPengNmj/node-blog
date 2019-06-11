@@ -108,6 +108,21 @@ module.exports.userCenter = async ctx => {
         roleRight
     });
 }
+
+//头相上传
+module.exports.uploadHead = async ctx=>{
+    if (ctx.session.isNew) {
+        return ctx.body = {
+            msg: "用户未登录",
+            status: 0
+        }
+    }
+
+    const data = ctx.request.body;
+    
+}
+
+
 // async function test() {
 //     let res = await new Promise((resolve, reject) => {
 //         setTimeout(() => {
