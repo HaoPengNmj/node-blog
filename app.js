@@ -57,6 +57,6 @@ app.use(static(path.join(__dirname, 'public')));
 
 app.use(router.routes()).use(router.allowedMethods());
 
-app.listen(3222, () => {
-    console.log("项目启动成功，监听在3222端口!!!")
+app.listen(3888, () => {
+    console.log("项目启动成功，监听在3888端口!!!")
 })
