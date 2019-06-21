@@ -61,10 +61,13 @@ typings/
 .next
 
 #layui images
-public/layui/images/face/
+src/nodeuii/public/layui/images/face/
 
 #dbpath
-config/db.js
+src/nodeuii/config/db.js
 
 #user face
-public/facefile/
+src/nodeuii/public/facefile/
+
+#production dist
+dist/
